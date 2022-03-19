@@ -6,9 +6,13 @@ const ContactsScreen = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [filteredContacts, setFilteredContacts] = useState(dummyContacts);
 
-    
+    useEffect(() => {
+        const newContacts = dummyContacts.filter(
+            contact => contact.user_display_name === searchTerm,
+            );
+        setFilteredContacts(newContacts);
+    }, [searchTerm]);
 
-    console.log(searchTerm);
     return (
         <View style={styles.page}>
             <TextInput
