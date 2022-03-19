@@ -7,24 +7,17 @@
  */
 
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet
-} from 'react-native';
+import { SafeAreaView, StatusBar} from 'react-native';
 
+import ContactsScreen from './src/screens/ContactsScreen';
 
-
-const App => {
-
+const App = () => {
   return (
     <SafeAreaView>
       <StatusBar barStyle={'dark-content'} />
-      
-    </SafeAreaView>
-  );
+        <ContactsScreen />
+      </SafeAreaView>
+    );
 };
-
-const styles = StyleSheet.create({});
 
 export default App;
