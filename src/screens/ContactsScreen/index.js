@@ -3,33 +3,35 @@ import {View, FlatList, Text, StyleSheet, TextInput} from 'react-native';
 import dummyContacts from '../../../assets/data/contacts.json';
 
 const ContactsScreen = () => {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [filteredContacts, setFilteredContacts] = useState(dummyContacts);
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filteredContacts, setFilteredContacts] = useState(dummyContacts);
 
-    useEffect(() => {
-        const newContacts = dummyContacts.filter(
-            contact => contact.user_display_name === searchTerm,
-            );
-        setFilteredContacts(newContacts);
-    }, [searchTerm]);
-
-    return (
-        <View style={styles.page}>
-            <TextInput
-                value={searchTerm}
-                onChangeText={setSearchTerm}
-                style={styles.searchInput}
-                placeholder="Search..."
-            />
-            <FlatList
-                data={filteredContacts}
-                renderItem={({item}) => (
-                <Text style={styles.contactName}>{item.user_display_name}</Text>
-                )}
-                ItemSeparatorComponent={() => <View style={styles.separator} />}
-            />
-        </View>
+  useEffect(() => {
+    const newContacts = dummyContacts.filter(contact =>
+      contact.user_display_name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase()),
     );
+    setFilteredContacts(newContacts);
+  }, [searchTerm]);
+
+  return (
+    <View style={styles.page}>
+      <TextInput
+        value={searchTerm}
+        onChangeText={setSearchTerm}
+        style={styles.searchInput}
+        placeholder="Search..."
+      />
+      <FlatList
+        data={filteredContacts}
+        renderItem={({item}) => (
+          <Text style={styles.contactName}>{item.user_display_name}</Text>
+        )}
+        ItemSeparatorComponent={() => <View style={styles.separator} />}
+      />
+    </View>
+  );
 };
 
 const styles = StyleSheet.create({
