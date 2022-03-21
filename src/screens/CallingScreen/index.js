@@ -25,7 +25,7 @@ const CallingScreen = () => {
                 <Ionicons name="ios-mic-off" size={30} color={'white'}/>
             </View>
 
-            <View style={styles.iconButton}>
+            <View style={[styles.iconButton, {backgroundColor: 'red'}]}>
                 <MaterialIcons name="phone-hangup" size={30} color={'white'}/>
             </View>
         </View>
@@ -58,6 +58,7 @@ const styles = StyleSheet.create({
         buttonsContainer: {
             backgroundColor: '#333333',
             padding: 20,
+            paddingBottom: 40,
             borderTopRightRadius: 15,
             borderTopLeftRadius: 15,
             flexDirection: 'row',
@@ -65,7 +66,7 @@ const styles = StyleSheet.create({
         },
         iconButton: {
             backgroundColor: '#4a4a4a',
-            padding: 10,
+            padding: 15,
             borderRadius: 50,
         }
 });
